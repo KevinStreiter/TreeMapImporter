@@ -4,6 +4,9 @@ use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
+use Slim\Views\Twig;
+use Slim\Views\TwigMiddleware;
+use Twig\Loader\FilesystemLoader;
 
 return [
     Configuration::class => function () {
@@ -45,5 +48,15 @@ return [
 
         return new PDO($dsn, $username, $password, $flags);
     },
+
+    Twig::class => function (ContainerInterface $container) {
+        $settings = $container->get(Configuration::class)->getArray('views');
+        $loader = new FilesystemLoader($settings['path']);
+        return new Twig($loader, $settings);
+    },
+
+    TwigMiddleware::class => function (ContainerInterface $container) {
+        return TwigMiddleware::createFromContainer($container->get(App::class), Twig::class);
+    }
 
 ];
