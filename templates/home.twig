@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="../static/build/bundle.css">
-    <script src="../static/build/bundle.js"></script>
-</head>
-<body>
-<section class="hero is is-fullheight">
-    <div class="container">
-        <figure class=image">
-            <img src="../assets/images/logo_small.png">
-
-        </figure>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TreeMap</title>
+        <link rel="stylesheet" href="../static/build/bundle.css">
+        <link rel="icon" href="../assets/images/logo_small_icon_only_inverted.png">
+        <script src="../static/build/bundle.js"></script>
+    </head>
+    <body>
+    <div class="hero greenBackground">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/TreeMapImporter/home">
+                    <img src="../assets/images/logo_small_icon_only.png">
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+        </nav>
     </div>
-</section>
-</body>
+    <section id="main" class="section">
+        <div class="field">
+            <div class="file is-centered has-name">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="resume" @change="onFileChange">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Upload Project
+                        </span>
+                    </span>
+
+                </label>
+            </div>
+        </div>
+
+        <div id="svgContainer" class="container">
+        </div>
+    </section>
+    </body>
 </html>

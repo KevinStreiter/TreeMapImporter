@@ -1,11 +1,33 @@
-let vue = require('vue/dist/vue');
-let css = require('../css/main.css')
-let bulma = require('../../../node_modules/bulma/css/bulma.css')
-let fontawesome = require('../../../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css')
-
+let Vue = require('vue/dist/vue');
+require('../css/main.css')
+require('../../../node_modules/bulma/css/bulma.css')
+require('../../../node_modules/@fortawesome/fontawesome-free/css/all.css')
 
 window.onload = () => {
-    console.log("hi")
+    initPage();
 };
 
+function initPage() {
 
+    new Vue({
+        el: '#main',
+        methods: {
+            onFileChange(e) {
+                let files:any = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createSVG(files[0]);
+            },
+            createSVG(file) {
+                if(file.type === 'image/svg+xml') {
+                    let svgContainer:HTMLBodyElement = <HTMLBodyElement> document.getElementById('svgContainer')
+                    let obj:HTMLObjectElement = <HTMLObjectElement> document.createElement('object');
+                    obj.data = URL.createObjectURL(file);
+                    obj.onload = e => URL.revokeObjectURL(obj.data);
+                    svgContainer.appendChild(obj);
+                }
+            }
+        }
+    });
+
+}
