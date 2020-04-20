@@ -25,7 +25,7 @@ $settings['doctrine'] = [
         'dbname' => 'treeMap',
         'user' => 'gegege',
         'password' => 'MWXw9$Ppmjl51drrm7',
-        'charset' => 'utf-8'
+        'charset' => 'utf8mb4'
     ]
 ];
 
