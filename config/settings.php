@@ -16,8 +16,8 @@ $settings['error_handler_middleware'] = [
 
 $settings['doctrine'] = [
     'dev_mode' => true,
-    'cache_dir' =>  __DIR__ . '/var/doctrine',
-    'metadata_dirs' => [__DIR__ . '/src/Domain'],
+    'cache_dir' =>  dirname(__DIR__) . '/var/doctrine',
+    'metadata_dirs' => [dirname(__DIR__) . '/src'],
     'connection' => [
         'driver' => 'pdo_mysql',
         'host' => 'localhost',

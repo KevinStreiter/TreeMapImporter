@@ -20,7 +20,7 @@ return [
         AppFactory::setContainer($container);
         $app = AppFactory::create();
 
-        $app->setBasePath('/TreeMapImporter');
+        $app->setBasePath('/treeMap');
 
         return $app;
     },
@@ -41,7 +41,7 @@ return [
     'db' => function(ContainerInterface $container) {
         $settings = $container->get(Configuration::class)->getArray('doctrine');
         $config = Setup::createAnnotationMetadataConfiguration(
-            [$settings['metadata_dirs']],
+            $settings['metadata_dirs'],
             $settings['dev_mode'],
             null,
             null,
