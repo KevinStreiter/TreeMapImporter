@@ -1,4 +1,7 @@
 <?php
+
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Tools\Setup;
 use Psr\Container\ContainerInterface;
 use Selective\Config\Configuration;
 use Slim\App;
@@ -35,18 +38,16 @@ return [
         );
     },
 
-    PDO::class => function (ContainerInterface $container) {
-        $settings = $container->get(Configuration::class)->getArray('db');
-
-        $host = $settings['host'];
-        $dbname = $settings['database'];
-        $username = $settings['username'];
-        $password = $settings['password'];
-        $charset = $settings['charset'];
-        $flags = $settings['flags'];
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-
-        return new PDO($dsn, $username, $password, $flags);
+    'db' => function(ContainerInterface $container) {
+        $settings = $container->get(Configuration::class)->getArray('doctrine');
+        $config = Setup::createAnnotationMetadataConfiguration(
+            [$settings['metadata_dirs']],
+            $settings['dev_mode'],
+            null,
+            null,
+            false
+        );
+        return EntityManager::create($settings['connection'], $config);
     },
 
     Twig::class => function (ContainerInterface $container) {

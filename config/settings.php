@@ -14,21 +14,19 @@ $settings['error_handler_middleware'] = [
     'log_error_details' => true,
 ];
 
-$settings['db'] = [
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'username' => 'gegege',
-    'database' => 'treeMap',
-    'password' => '',
-    'charset' => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci',
-    'flags' => [
-        PDO::ATTR_PERSISTENT => false,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_EMULATE_PREPARES => true,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci'
-    ],
+$settings['doctrine'] = [
+    'dev_mode' => true,
+    'cache_dir' =>  __DIR__ . '/var/doctrine',
+    'metadata_dirs' => [__DIR__ . '/src/Domain'],
+    'connection' => [
+        'driver' => 'pdo_mysql',
+        'host' => 'localhost',
+        'port' => 3306,
+        'dbname' => 'treeMap',
+        'user' => 'gegege',
+        'password' => 'MWXw9$Ppmjl51drrm7',
+        'charset' => 'utf-8'
+    ]
 ];
 
 $settings['views'] = [

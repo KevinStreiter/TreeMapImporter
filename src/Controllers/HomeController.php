@@ -1,11 +1,11 @@
 <?php
-namespace App\Action;
+namespace App\Controllers;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 
-final class HomeAction {
+final class HomeController {
 
     private $twig;
 

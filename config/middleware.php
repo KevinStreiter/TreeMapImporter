@@ -1,5 +1,4 @@
 <?php
-use Selective\Config\Configuration;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Views\TwigMiddleware;

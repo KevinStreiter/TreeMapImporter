@@ -2,6 +2,7 @@
     "require": {
         "ext-json": "*",
         "ext-pdo": "*",
+        "doctrine/orm": "^2.7",
         "php-di/php-di": "^6.1",
         "selective/config": "^0.2.0",
         "slim/php-view": "^2.2",
